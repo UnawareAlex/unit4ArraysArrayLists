@@ -99,4 +99,65 @@ public class ArrayMethods
             }
         } 
     }
+    
+    public int secondLargest()
+    {
+        int largest = values[0];
+        for (int i = 1; i < values.length; i++)
+        {
+            if (values[i] > largest)
+            {
+                largest = values[i];
+            }
+        }
+        return largest;
+    }
+    
+    public boolean increasingOrder()
+    //returns true if array IS sorted in increasing order
+    {
+        boolean state = true;
+        for (int i = 0; i < values.length; i++)
+        {
+            if (values[i] < values[i - 1])
+            {
+                state = false;
+                break;
+            }
+        }
+        return state;
+    }
+    
+    public boolean adjacentDuplicates()
+    //returns false if there are NO adjacent duplicates
+    {
+        boolean adjacent = false;
+        for (int i = 0; i < values.length; i++)
+        {
+            if (values[i] == values[i - 1])
+            {
+                adjacent = true;
+                break;
+            }
+        }
+        return adjacent;
+    }
+    
+    public boolean duplicateElements()
+    //returns false if there are NO duplicates
+    {
+        boolean duplicates = false;
+        for (int i = 0; i < values.length; i++)
+        {
+            for (int n = 0; n < values.length; n++)
+            {
+                if (values[i] == values[n])
+                {
+                    duplicates = true;
+                    break;
+                }
+            }
+        }
+        return duplicates;
+    }
 }

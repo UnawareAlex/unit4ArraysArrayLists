@@ -10,12 +10,12 @@ public class ArrayOperations
         System.out.println("Last array item: int " + num[8]);
         System.out.println("num[num.length - 1] is equal to " + num[num.length - 1]);
         System.out.println("");
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < num.length; i++)
         {
             System.out.print(num[i] + " ");
         }
         System.out.println("");
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < num.length; i++)
         {
             System.out.print("int " + num[i] + " ");
         }
