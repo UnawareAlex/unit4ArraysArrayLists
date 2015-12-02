@@ -3,7 +3,7 @@
 public class CharMatrix
 {
   // Instance variables:
-
+  private char grid[][];
   // Constructor: creates a grid with dimensions rows, cols,
   // and fills it with spaces
   public CharMatrix(int rows, int cols)
