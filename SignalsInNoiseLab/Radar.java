@@ -170,7 +170,7 @@ public class Radar
         {
             for (int j = 0; j < currentScan[i].length; j++)
             {
-                //currentScan[i][j] = 
+                //currentScan[i][j] = fdsadfsa
             }
         }
         
