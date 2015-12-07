@@ -1,40 +1,42 @@
-
-
-/**
- * Write a description of class MagicSquares here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+import java.util.Scanner;
+import java.util.ArrayList;
 public class MagicSquares
 {
-    /** description of instance variable x (add comment for each instance variable) */
-    private int x;
-
-    /**
-     * Default constructor for objects of class MagicSquares
-     */
-    public MagicSquares()
+    public static void MagicSquares()
     {
         // initialise instance variables
-        x = 0;
+        ArrayList<Integer> nums = new ArrayList<Integer>();
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Please enter all numbers 1 through 16 in any order you want: ");
+        for (int i = 0; i <= 16; i++)
+        {
+            for (int j = 0
+        }
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *    that describes the operation of the method
-     *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
-     */
-    public int sampleMethod(int y)
+    
+    public boolean testInput(ArrayList arrayList)
     {
-        // put your code here
-        return x+y;
+        boolean state = true;
+        for (int i = 1; i <=16; i++)
+        {
+            if (arrayList.contains(i) == false) {
+                state = false;
+                break;
+            }
+        }
+        return state;
     }
-
+    
+    public int testRow(ArrayList arrayList)
+    {
+        boolean state = true;
+        for (int i = 0; i < 16; i += 4)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                int sumRow = 0;
+                sumRow += arrayList.get(i + j);
+            }
+        }
+    }
 }
