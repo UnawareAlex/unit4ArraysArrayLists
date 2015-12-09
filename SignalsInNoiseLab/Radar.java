@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 /**
  * The model for radar scan and accumulator
  * 
@@ -34,17 +34,17 @@ public class Radar
     public Radar(int rows, int cols)
     {
         // initialize the currentScan 2D array and the accumulator 2D array
-        currentScan = new boolean[rows][cols];
-        accumulator = new int[rows][cols];
+        this.currentScan = new boolean[rows][cols];
+        this.accumulator = new int[rows][cols];
         
         
         // randomly set the location of the monster (can be explicity set through the
         //  setMonsterLocation method for the unit test
-        monsterLocationRow = (int)(Math.random() * rows);
-        monsterLocationCol = (int)(Math.random() * cols);
+        this.monsterLocationRow = (int)(Math.random() * rows);
+        this.monsterLocationCol = (int)(Math.random() * cols);
         
-        noiseFraction = 0.05;
-        numScans= 0;
+        this.noiseFraction = 0.05;
+        this.numScans = 0;
     }
     
     /**
@@ -65,9 +65,18 @@ public class Radar
         //    2. set the location of the monster in the currentScan 2D array
         setMonsterLocation(monsterLocationRow,monsterLocationCol);
         //    3. inject noise into the grid
-        setNoiseFraction(noiseFraction);
+        injectNoise();
         //    4. update the accumulator 2D array based on the state of the currentScan 2D array
-        
+        for (int i = 0; i < currentScan.length; i++) 
+        {
+            for (int j = 0; j < currentScan[i].length; j++)
+            {
+                if (currentScan[i][j] == true)
+                {
+                    accumulator[i][j] += 1;
+                }
+            }
+        }
         //    5. increment the numScans instance variable
         numScans++;
     }
@@ -170,15 +179,13 @@ public class Radar
         {
             for (int j = 0; j < currentScan[i].length; j++)
             {
-                //currentScan[i][j] = fdsadfsa
+                double prob = Math.random();
+                if (prob <= noiseFraction)
+                {
+                  currentScan[i][j] = true; 
+                }
             }
         }
-        
-        //
-        // !!! add code here !!!
-        //
-        
-        
     }
     
 }
