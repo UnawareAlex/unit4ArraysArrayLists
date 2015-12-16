@@ -55,9 +55,9 @@ public class Radar
     {
         // algorithm for performing a scan:
         //    1. set all cells in the currentScan 2D array to false
-        for (int i = 0; i < currentScan.length; i++) 
+        for (int i = 0; i < currentScan.length; i++) //iterate through all rows
         {
-            for (int j = 0; j < currentScan[i].length; j++)
+            for (int j = 0; j < currentScan[i].length; j++) //iterate through all columns
             {
                 currentScan[i][j] = false;
             }
@@ -73,7 +73,7 @@ public class Radar
             {
                 if (currentScan[i][j] == true)
                 {
-                    accumulator[i][j] += 1;
+                    accumulator[i][j] += 1; //if the current cell is 'true', add 1 to the accumulator in its position
                 }
             }
         }
@@ -179,8 +179,8 @@ public class Radar
         {
             for (int j = 0; j < currentScan[i].length; j++)
             {
-                double prob = Math.random();
-                if (prob <= noiseFraction)
+                double prob = Math.random(); //randomly determines value between 0 and 1
+                if (prob <= noiseFraction) //if random value is within the range of noiseFraction...
                 {
                   currentScan[i][j] = true; 
                 }

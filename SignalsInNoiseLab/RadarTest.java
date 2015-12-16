@@ -1,10 +1,8 @@
-
-
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
+import java.util.Random;
 /**
  * The test class RadarTest.
  *
@@ -115,8 +113,8 @@ public class RadarTest
     }
     
     /**
-     * Constucts a Radar object with given dimensions and determines a random monster location which is 
-     * tested after scanned through the radar 200 times
+     * Constucts a Radar object with given dimensions and determines a random monster location using
+     * the Random Class which is tested after the radar is scanned 200 times
      */
     @Test
     public void testMonsterLocationRandom()
@@ -124,8 +122,9 @@ public class RadarTest
         final int ROWS = 100;
         final int COLS = 100;
         Radar radar = new Radar(ROWS, COLS);
-        int x = (int)(Math.random() * 10);
-        int y = (int)(Math.random() * 10);
+        Random generator = new Random();
+        int x = generator.nextInt(100);
+        int y = generator.nextInt(100);
         radar.setMonsterLocation(x, y);
         radar.setNoiseFraction(.25);
         for (int i = 0; i < 200; i++)

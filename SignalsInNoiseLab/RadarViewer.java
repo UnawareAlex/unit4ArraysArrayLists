@@ -1,5 +1,6 @@
 import javax.swing.JFrame;
 import java.util.Scanner;
+import java.util.Random;
 /**
  * Class that contains the main method for the program and creates the frame containing the component.
  * 
@@ -15,12 +16,58 @@ public class RadarViewer
     public static void main(String[] args) throws InterruptedException
     {
         // create the radar, set the monster location, and perform the initial scan
-        Scanner scan = new Scanner(System.in);
-        System.out.println("What row would you like the monster to be in (0-99): ");
-        int row = scan.nextInt();
-        System.out.println("What column would you like the monster to be in (0-99): ");
-        int column = scan.nextInt();
+        int again = 0;
+        int row = 0;
+        int column = 0;
+        while (again == 0) //loops user back to initial question if they enter an invalid input (NOT set or guess)
+        {
+            Scanner scan = new Scanner(System.in);
+            System.out.println("Would you like to set the monster location or guess it's position (set/guess)? ");
+            String input = scan.next();
+            if (input.equals("set")) //monster location determined by the user
+            {
+                System.out.println("What row would you like the monster to be in (0-99): ");
+                row = scan.nextInt();
+                System.out.println("What column would you like the monster to be in (0-99): ");
+                column = scan.nextInt();
+                again = 1;
+            }
+            else if (input.equals("guess")) //monster location randomly selected and user guess a row and colum
+            {
+                Random generator = new Random();
+                row = generator.nextInt(100); //random row
+                column = generator.nextInt(100); //random col
+                System.out.println("What row would you like to guess (0-99): ");
+                int rowGuess = scan.nextInt();
+                System.out.println("What column would you like to guess (0-99): ");
+                int columnGuess = scan.nextInt();
+                
+                if (Math.abs(row - rowGuess) >= 35 || Math.abs(column - columnGuess) >= 35)
+                {
+                    System.out.println("The monster is at row " + row + " column " + column + ". Better luck next time!");
+                }
+                else if (Math.abs(row - rowGuess) >= 15 || Math.abs(column - columnGuess) >= 15)
+                {
+                    System.out.println("The monster is at row " + row + " column " + column + ". Not bad!");
+                }
+                else if (Math.abs(row - rowGuess) >= 1 || Math.abs(column - columnGuess) >= 1)
+                {
+                    System.out.println("The monster is at row " + row + " column " + column + ". So close!");
+                }
+                else //when guess is right on point!
+                {
+                    System.out.println("The monster is at row " + row + " column " + column + ". Perfect guess!");
+                }
+                again = 1;
+            }
+            else 
+            {
+                System.out.println("Please enter either 'set' or 'guess' ");
+            }
+        }
         
+        
+        //determine size of grid
         final int ROWS = 100;
         final int COLS = 100;
         Radar radar = new Radar(ROWS, COLS);
