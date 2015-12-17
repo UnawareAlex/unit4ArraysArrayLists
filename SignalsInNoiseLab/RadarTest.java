@@ -48,7 +48,7 @@ public class RadarTest
         final int ROWS = 100;
         final int COLS = 100;
         Radar radar = new Radar(ROWS, COLS);
-        radar.setMonsterLocation(42, 42);
+        radar.setMonsterLocation(42, 42); //The Answer to the Universe
         radar.setNoiseFraction(.15);
         for (int i = 0; i < 200; i++)
         {
@@ -62,9 +62,9 @@ public class RadarTest
         {
             for (int j = 0; j < 100; j++)
             {
-                if (radar.getAccumulatedDetection(i, j) > largestValue)
+                if (radar.getAccumulatedDetection(i, j) > largestValue) //Monster will always have largest value out of all cells in accumulator array
                 {
-                    largestValue = radar.getAccumulatedDetection(i, j);
+                    largestValue = radar.getAccumulatedDetection(i, j); 
                     largestRow = i;
                     largestCol = j;
                 }
@@ -122,8 +122,8 @@ public class RadarTest
         final int ROWS = 100;
         final int COLS = 100;
         Radar radar = new Radar(ROWS, COLS);
-        Random generator = new Random();
-        int x = generator.nextInt(100);
+        Random generator = new Random(); //create random object
+        int x = generator.nextInt(100); //randomy determine row and column values for the monster
         int y = generator.nextInt(100);
         radar.setMonsterLocation(x, y);
         radar.setNoiseFraction(.25);
